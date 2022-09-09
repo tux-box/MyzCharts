@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 MAINTAINER tux-box <nathan.flow@gmail.com>
 
-RUN apt-get update && apt-get install -y apache2 && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install openjdk-8-jre-headless -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #persistant storage?
 # Usage: VOLUME ["/dir_1", "/dir_2" ..]
@@ -24,7 +24,7 @@ COPY StarMadeServerStart.sh $RUN_DIR
 
 #run commands directly rather than from file.
 WORKDIR /var/run/starmade
-CMD ["sudo apt install openjdk-8-jre-headless -y"]
+#CMD ["sudo apt install openjdk-8-jre-headless -y"]
 CMD ["wget  https://files.star-made.org/StarMade-Starter.jar"]
 CMD ["./StarMade-Starter.jar -nogui","-D", "FOREGROUND"]
 ENTRYPOINT ["java -jar"]
