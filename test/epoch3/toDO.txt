@@ -1,0 +1,12 @@
+Make the install script install mods from a file.
+Make changes to game files for server preferences, using script. done!
+
+fix case synsitivity issues? 
+	map name vs template name.
+	Other synsitivity issues unknown.
+
+Different commands for moving files in a directory.	
+mv ~/tmp/epoch-release/server_install_pack/* ~
+mv ~/tmp/epoch-release/server_install_pack/. ~
+
+clear && rm -r -f ~/.profile && rm -r -f * && git clone git@github.com:tux-box/epoch3.git && sed -i 's/anonymous/en_saba_nur/g' /home/arma3/epoch3/steamCommand.sh && cd epoch3 && ./setupEpoch.sh
