@@ -1,0 +1,2 @@
+following this tutorial to get started.
+https://faun.pub/how-to-build-a-docker-container-from-scratch-docker-basics-a-must-know-395cba82897b
