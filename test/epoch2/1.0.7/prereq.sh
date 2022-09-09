@@ -10,10 +10,14 @@ tar jxvf a2oa-server-1.63.112555.tar.bz2
 # Get the Arma 2 Linux dedicated server?
 #https://community.bistudio.com/wiki/Arma_Dedicated_Server#Linux
 
+# Get google drive files from CLI: https://rmdhnreza.my.id/download-from-google-drive-using-command-line-interface-cli/
+
+# https://epochmod.com/a2dayzepoch.php
+
 # Get Dayz Epoch Server files
 wget https://drive.google.com/file/d/1jDn86sfTwcRae4NZgHK76k_CaY1jOUP2/view?usp=sharing
 
-# Get Dayz Epoch Client files   https://rmdhnreza.my.id/download-from-google-drive-using-command-line-interface-cli/
+# Get Dayz Epoch Client files
 https://drive.google.com/file/d/19iCJevU008g311vsxJNR0PjYmkSv36YK/view?usp=sharing
 
 wget https://drive.google.com/file/d/19iCJevU008g311vsxJNR0PjYmkSv36YK/view?usp=sharing
