@@ -1,0 +1,29 @@
+apiVersion: v2
+appVersion: "2022.11.0"
+dependencies:
+  - name: common
+    repository: https://library-charts.truecharts.org
+    version: 10.5.6
+deprecated: false
+description: StarMade Dedicated Server
+home: https://truecharts.org/docs/charts/stable/starmade
+icon: https://truecharts.org/img/hotlink-ok/chart-icons/starmade.png
+keywords:
+  - starmade
+kubeVersion: ">=1.16.0-0"
+maintainers:
+  - email: info@truecharts.org
+    name: TrueCharts
+    url: https://truecharts.org
+name: starmade
+sources:
+  - https://github.com/truecharts/charts/tree/master/charts/stable/starmade
+  - https://github.com/itzg/docker-minecraft-server
+  - https://hub.docker.com/r/itzg/minecraft-server
+type: application
+version: 0.202.86
+annotations:
+  truecharts.org/catagories: |
+    - games
+  truecharts.org/SCALE-support: "true"
+  truecharts.org/grade: U
