@@ -1,4 +1,5 @@
 FROM tuxbox1/java8
+#FROM openjdk:8-slim-bullseye
 
 MAINTAINER tux-box <nathan.flow@gmail.com>
 
@@ -6,22 +7,41 @@ MAINTAINER tux-box <nathan.flow@gmail.com>
 # Usage: VOLUME ["/dir_1", "/dir_2" ..]
 #VOLUME ["/my_files"]
 
-#ENV RUN_USER  starmade
-#ENV RUN_GROUP starmade
-#ENV LOG_DIR   /var/log/starmade
-#ENV PID_FILE  /var/run/starmade/starmade.pid
-#ENV RUN_DIR   /var/run/starmade
-#ENV LOCK_DIR  /var/lock/starmade
+ENV MEM_MIN -Xms1024m
+ENV MEM_MAX -Xmx2048m
 
-#RUN mkdir -p $RUN_DIR
-#RUN mkdir -p $LOCK_DIR
-#RUN mkdir -p $LOG_DIR
+ENV RUN_DIR   /starmade
 
-#run commands directly rather than from file.
-#WORKDIR /var/run/starmade
+RUN mkdir -p $RUN_DIR
 
-CMD ["wget  https://files.star-made.org/StarMade-Starter.jar"]
-CMD ["java -jar ./StarMade-Starter.jar -nogui","-D", "FOREGROUND"]
-#ENTRYPOINT ["java -jar"]
+#run commands directly rather than from file. this didn't seam to work adding files back to >
+WORKDIR /starmade
+COPY getFiles.sh /starmade/
+COPY launchServer.sh /starmade/
+#launch files on container start.
+#WIP
+ENTRYPOINT ["./starmade/getfiles.sh"]
+ENTRYPOINT ["./starmade/launchServer.sh"]
+
+ENTRYPOINT ["/starmade/getfiles.sh"]
+ENTRYPOINT ["/starmade/launchServer.sh"]
+
+ENTRYPOINT ["/bin/bash","./starmade/getfiles.sh"]
+ENTRYPOINT ["/bin/bash","./starmade/launchServer.sh"]
+
+ENTRYPOINT ["/bin/bash","/starmade/getfiles.sh"]
+ENTRYPOINT ["/bin/bash","/starmade/launchServer.sh"]
+
+ENTRYPOINT ./starmade/getfiles.sh
+ENTRYPOINT ./starmade/launchServer.sh
+
+ENTRYPOINT /starmade/getfiles.sh
+ENTRYPOINT /starmade/launchServer.sh
+
+ENTRYPOINT /bin/bash ./starmade/getfiles.sh
+ENTRYPOINT /bin/bash ./starmade/launchServer.sh
+
+ENTRYPOINT /bin/bash /starmade/getfiles.sh
+ENTRYPOINT /bin/bash /starmade/launchServer.sh
 
 EXPOSE 4242
