@@ -9,39 +9,17 @@ MAINTAINER tux-box <nathan.flow@gmail.com>
 
 ENV MEM_MIN -Xms1024m
 ENV MEM_MAX -Xmx2048m
-
-ENV RUN_DIR   /starmade
+ENV RUN_DIR /starmade
 
 RUN mkdir -p $RUN_DIR
 
-#run commands directly rather than from file. this didn't seam to work adding files back to >
+#run commands directly rather than from file. this didn't seam to work adding files back to call them again.
 WORKDIR /starmade
 COPY getFiles.sh /starmade/
 COPY launchServer.sh /starmade/
-#launch files on container start.
-#WIP
-ENTRYPOINT ["./starmade/getfiles.sh"]
-ENTRYPOINT ["./starmade/launchServer.sh"]
+COPY getFilesAndlaunch.sh /starmade/
 
-ENTRYPOINT ["/starmade/getfiles.sh"]
-ENTRYPOINT ["/starmade/launchServer.sh"]
-
-ENTRYPOINT ["/bin/bash","./starmade/getfiles.sh"]
-ENTRYPOINT ["/bin/bash","./starmade/launchServer.sh"]
-
-ENTRYPOINT ["/bin/bash","/starmade/getfiles.sh"]
-ENTRYPOINT ["/bin/bash","/starmade/launchServer.sh"]
-
-ENTRYPOINT ./starmade/getfiles.sh
-ENTRYPOINT ./starmade/launchServer.sh
-
-ENTRYPOINT /starmade/getfiles.sh
-ENTRYPOINT /starmade/launchServer.sh
-
-ENTRYPOINT /bin/bash ./starmade/getfiles.sh
-ENTRYPOINT /bin/bash ./starmade/launchServer.sh
-
-ENTRYPOINT /bin/bash /starmade/getfiles.sh
-ENTRYPOINT /bin/bash /starmade/launchServer.sh
+CMD ["/starmade/getFilesAndlaunch.sh"]
+ENTRYPOINT ["/bin/bash"]
 
 EXPOSE 4242
