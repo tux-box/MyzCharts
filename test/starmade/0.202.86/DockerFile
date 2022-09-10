@@ -1,5 +1,5 @@
-FROM tuxbox1/java8
-#FROM openjdk:8-slim-bullseye
+#FROM tuxbox1/java8
+FROM openjdk:8-slim-bullseye
 
 MAINTAINER tux-box <nathan.flow@gmail.com>
 
@@ -11,15 +11,13 @@ ENV MEM_MIN -Xms1024m
 ENV MEM_MAX -Xmx2048m
 ENV RUN_DIR /starmade
 
-RUN mkdir -p $RUN_DIR
+RUN mkdir -p $RUN_DIR && apt-get update && apt-get install wget curl -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #run commands directly rather than from file. this didn't seam to work adding files back to call them again.
 WORKDIR /starmade
-COPY getFiles.sh /starmade/
-COPY launchServer.sh /starmade/
-COPY getFilesAndlaunch.sh /starmade/
+COPY getFilesAndLaunch.sh /starmade/
 
-CMD ["/starmade/getFilesAndlaunch.sh"]
+CMD ["/starmade/getFilesAndLaunch.sh","--foreground"]
 ENTRYPOINT ["/bin/bash"]
 
 EXPOSE 4242
