@@ -1,8 +1,6 @@
-FROM ubuntu:22.04
+FROM tuxbox1/java8
 
 MAINTAINER tux-box <nathan.flow@gmail.com>
-
-RUN apt-get update && apt-get install openjdk-8-jre-headless -y && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #persistant storage?
 # Usage: VOLUME ["/dir_1", "/dir_2" ..]
@@ -19,14 +17,11 @@ RUN mkdir -p $RUN_DIR
 RUN mkdir -p $LOCK_DIR
 RUN mkdir -p $LOG_DIR
 
-COPY StarMadeInstallerFile.sh $RUN_DIR
-COPY StarMadeServerStart.sh $RUN_DIR
-
 #run commands directly rather than from file.
 WORKDIR /var/run/starmade
-#CMD ["sudo apt install openjdk-8-jre-headless -y"]
+
 CMD ["wget  https://files.star-made.org/StarMade-Starter.jar"]
 CMD ["./StarMade-Starter.jar -nogui","-D", "FOREGROUND"]
-ENTRYPOINT ["java -jar"]
+#ENTRYPOINT ["java -jar"]
 
 EXPOSE 4242
