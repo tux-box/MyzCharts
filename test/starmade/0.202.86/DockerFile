@@ -12,12 +12,13 @@ ENV MEM_MAX -Xmx2048m
 ENV RUN_DIR /starmade
 
 RUN mkdir -p $RUN_DIR && apt-get update && apt-get install wget curl -y && apt-get clean && rm -rf /var/lib/apt/lists/*
+#install screen?
 
 #run commands directly rather than from file. this didn't seam to work adding files back to call them again.
 WORKDIR /starmade
 COPY getFilesAndLaunch.sh /starmade/
 
-CMD ["/starmade/getFilesAndLaunch.sh","--foreground"]
+CMD ["/starmade/getFilesAndLaunch.sh","--foreground"]#or CMD [“/starmade/getFilesAndLaunch.sh”, “-D”, “FOREGROUND”]
 ENTRYPOINT ["/bin/bash"]
 
 EXPOSE 4242

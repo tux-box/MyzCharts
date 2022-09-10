@@ -10,6 +10,6 @@ wget https://files.star-made.org/StarMade-Starter.jar -P /starmade/
 #launch the installer
 java -jar /starmade/StarMade-Starter.jar -nogui
 
-#launch the server
+#launch the server https://www.star-made.org/help/setting_up_a_server
 cd /starmade/StarMade
 java -Xms1024m -Xmx2048m -jar /starmade/StarMade/StarMade.jar -server -nogui
