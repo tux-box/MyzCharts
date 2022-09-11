@@ -21,4 +21,5 @@ COPY getFilesAndLaunch.sh /starmade/
 CMD ["/starmade/getFilesAndLaunch.sh","--foreground"]#or CMD [“/starmade/getFilesAndLaunch.sh”, “-D”, “FOREGROUND”]
 ENTRYPOINT ["/bin/bash"]
 
-EXPOSE 4242
+EXPOSE 4242/udp
+EXPOSE 4242/tcp
