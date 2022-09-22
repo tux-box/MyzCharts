@@ -8,8 +8,6 @@ fi
 #process all subdirectories and files in parent directory
 all="$(find $1 -depth)"
 
-
-
 for name in ${all}; do
         #set new name in lower case for files and directories
         new_name="$(dirname "${name}")/$(basename "${name}" | tr '[A-Z]' '[a-z]')"
