@@ -1,7 +1,6 @@
 #!/bin/bash
-
 #setup enviroment for server.
-installDIR=/home/arma3
+installDIR=/arma3
 
 mkdir ${installDIR}
 mkdir ${installDIR}/tmp
